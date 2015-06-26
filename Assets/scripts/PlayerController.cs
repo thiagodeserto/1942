@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour {
 
     private float lastTimeShot = 0.0f;
 
-    private Vector3 lastMousePosition = Vector3.zero;
-
     [SerializeField]
     private GameObject fire;
 
@@ -34,7 +32,6 @@ public class PlayerController : MonoBehaviour {
     {
         Vector3 translate = Vector3.zero;
 
-
         if (Input.GetKey("left"))
         {
             translate += Vector3.left * speed * Time.deltaTime;
@@ -50,6 +47,13 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey("down"))
         {
             translate += Vector3.down * speed * Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown("p"))
+        {
+            bool enabled = Time.timeScale == 1;
+            Time.timeScale = (enabled ? 0 : 1);
+            UIManager.Instance.SetPaused(enabled);
         }
 
         if(Input.GetKey("space"))

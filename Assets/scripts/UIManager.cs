@@ -16,6 +16,9 @@ public class UIManager : Singleton<UIManager> {
     [SerializeField]
     private Transform lowerRight;
 
+    [SerializeField]
+    private GameObject pause;
+
     private int highscore = 0;
     public void AddScore(int score)
     {
@@ -27,6 +30,11 @@ public class UIManager : Singleton<UIManager> {
 	void Start () {
         
 	}
+
+    public void SetPaused(bool enabled)
+    {
+        pause.SetActive(enabled);
+    }
 
     public void UpdateLives(int lives, int maxLives)
     {
