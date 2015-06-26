@@ -4,15 +4,10 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 
     [SerializeField]
-    private GameObject player;
+    private float speed;
 
     [SerializeField]
     private GameObject explosion;
-
-	// Use this for initialization
-	void Start () {
-        player = GameObject.FindObjectOfType<PlayerController>().gameObject;
-	}
 
     public void Kill()
     {
@@ -35,7 +30,7 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 diff = player.transform.position - transform.position;
-        transform.Translate(diff.normalized * Time.deltaTime);
+        Vector3 diff = Player.Instance.transform.position - transform.position;
+        transform.Translate(diff.normalized * this.speed * Time.deltaTime);
 	}
 }
