@@ -8,7 +8,6 @@ public class Player : MonoBehaviour {
 
     private int lives;
     
-
 	// Use this for initialization
 	void Start () {
         this.lives = maxLives;
@@ -24,8 +23,7 @@ public class Player : MonoBehaviour {
         }
         else
         {
-            // TODO: Proper game over
-            Application.LoadLevel(Application.loadedLevelName);
+            UIManager.Instance.GameOver();
         }
     }
 	

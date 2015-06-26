@@ -19,6 +19,9 @@ public class UIManager : Singleton<UIManager> {
     [SerializeField]
     private GameObject pause;
 
+    [SerializeField]
+    private GameObject gameover;
+
     private int highscore = 0;
     public void AddScore(int score)
     {
@@ -31,9 +34,23 @@ public class UIManager : Singleton<UIManager> {
         
 	}
 
-    public void SetPaused(bool enabled)
+    public void TogglePause()
     {
+        bool enabled = Time.timeScale == 1;
+        Time.timeScale = (enabled ? 0 : 1);
         pause.SetActive(enabled);
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+        gameover.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        Application.LoadLevel(Application.loadedLevelName);
     }
 
     public void UpdateLives(int lives, int maxLives)

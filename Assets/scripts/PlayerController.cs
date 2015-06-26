@@ -51,9 +51,7 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown("p"))
         {
-            bool enabled = Time.timeScale == 1;
-            Time.timeScale = (enabled ? 0 : 1);
-            UIManager.Instance.SetPaused(enabled);
+            UIManager.Instance.TogglePause();
         }
 
         if(Input.GetKey("space"))
