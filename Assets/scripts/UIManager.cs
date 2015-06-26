@@ -9,15 +9,9 @@ public class UIManager : Singleton<UIManager> {
     private Text highscoreText;
 
     [SerializeField]
-    private int maxLives = 3;
-
-    [SerializeField]
     private GameObject lifePrefab;
 
-    private int lives;
-
     private List<GameObject> livesObjects = new List<GameObject>();
-
 
     [SerializeField]
     private Transform lowerRight;
@@ -31,23 +25,22 @@ public class UIManager : Singleton<UIManager> {
 
 	// Use this for initialization
 	void Start () {
-        this.lives = maxLives;
-        UpdateLives();
+        
 	}
 
-    void UpdateLives()
+    public void UpdateLives(int lives, int maxLives)
     {
         while(livesObjects.Count < maxLives)
         {
             Vector3 position = lowerRight.transform.position;
-            position -= new Vector3(100 * livesObjects.Count,0,0);
+            position -= new Vector3(25+ (50 * livesObjects.Count),-25,0);
             GameObject lifeGO = Instantiate(lifePrefab, position, Quaternion.identity) as GameObject;
-            lifeGO.transform.parent = lowerRight.transform;
+            lifeGO.transform.SetParent(lowerRight.transform);
             livesObjects.Add(lifeGO);
         }
         for(int i = 0; i < livesObjects.Count; i++)
         {
-            livesObjects[i].SetActive(lives >= i);
+            livesObjects[i].SetActive(lives > i);
         }
     }
 	

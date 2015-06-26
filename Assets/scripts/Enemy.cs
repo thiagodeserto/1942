@@ -14,12 +14,23 @@ public class Enemy : MonoBehaviour {
         player = GameObject.FindObjectOfType<PlayerController>().gameObject;
 	}
 
+    public void Kill()
+    {
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
-        UIManager.Instance.AddScore(100);
-        Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(collider.gameObject);
-        Destroy(gameObject);
+        Fire fire = collider.gameObject.GetComponent<Fire>();
+
+        if(fire != null)
+        {
+            Destroy(collider.gameObject);
+            UIManager.Instance.AddScore(100);
+        }
+        
+        Kill();
     }
 	
 	// Update is called once per frame
