@@ -32,19 +32,19 @@ public class PlayerController : MonoBehaviour {
     {
         Vector3 translate = Vector3.zero;
 
-        if (Input.GetKey("left"))
+        if (Input.GetKey("left") && transform.position.x > -0.8f)
         {
             translate += Vector3.left * speed * Time.deltaTime;
         }
-        if (Input.GetKey("right"))
+        if (Input.GetKey("right") && transform.position.x < 0.8f)
         {
             translate += Vector3.right * speed * Time.deltaTime;
         }
-        if (Input.GetKey("up"))
+        if (Input.GetKey("up") && transform.position.y < 1.35f)
         {
             translate += Vector3.up * speed * Time.deltaTime;
         }
-        if (Input.GetKey("down"))
+        if (Input.GetKey("down") && transform.position.y > -1.35f)
         {
             translate += Vector3.down * speed * Time.deltaTime;
         }
