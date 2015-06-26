@@ -5,9 +5,12 @@ public class HighscoreManager : Singleton<HighscoreManager> {
 
     private int highscore;
 
+    [SerializeField]
+    private int defaultHighscore;
+
 	// Use this for initialization
 	void Start () {
-        this.highscore = PlayerPrefs.GetInt("highscore", 1000);
+        this.highscore = PlayerPrefs.GetInt("highscore", defaultHighscore);
         UIManager.Instance.UpdateHighscore(this.highscore);
 	}
 
