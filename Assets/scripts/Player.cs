@@ -1,18 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
+public class Player : Singleton<Player> {
 
     [SerializeField]
     private int maxLives = 3;
 
     private int lives;
+
+    private int score = 0;
     
 	// Use this for initialization
 	void Start () {
         this.lives = maxLives;
         UIManager.Instance.UpdateLives(lives, maxLives);
+        UIManager.Instance.UpdateScore(0);
 	}
+
+    public void AddScore(int score)
+    {
+        this.score += score;
+        UIManager.Instance.UpdateScore(this.score);
+    }
 
     void RemoveLife()
     {
@@ -26,11 +35,6 @@ public class Player : MonoBehaviour {
             UIManager.Instance.GameOver();
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     void OnTriggerEnter2D(Collider2D collider)
     {

@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour {
         if(fire != null)
         {
             Destroy(collider.gameObject);
-            UIManager.Instance.AddScore(100);
+            Player.Instance.AddScore(100);
         }
         
         Kill();

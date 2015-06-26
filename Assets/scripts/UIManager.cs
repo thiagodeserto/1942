@@ -9,6 +9,9 @@ public class UIManager : Singleton<UIManager> {
     private Text highscoreText;
 
     [SerializeField]
+    private Text scoreText;
+
+    [SerializeField]
     private GameObject lifePrefab;
 
     private List<GameObject> livesObjects = new List<GameObject>();
@@ -22,12 +25,9 @@ public class UIManager : Singleton<UIManager> {
     [SerializeField]
     private GameObject gameover;
 
-    private int highscore = 0;
-    public void AddScore(int score)
-    {
-        this.highscore += score;
-        highscoreText.text = highscore.ToString();
-    }
+
+
+    
 
 	// Use this for initialization
 	void Start () {
@@ -51,6 +51,17 @@ public class UIManager : Singleton<UIManager> {
     {
         Time.timeScale = 1;
         Application.LoadLevel(Application.loadedLevelName);
+    }
+
+    public void UpdateScore(int score)
+    {
+        this.scoreText.text = score.ToString();
+        HighscoreManager.Instance.SetScore(score);
+    }
+
+    public void UpdateHighscore(int highscore)
+    {
+        this.highscoreText.text = highscore.ToString();
     }
 
     public void UpdateLives(int lives, int maxLives)
