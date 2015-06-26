@@ -49,11 +49,6 @@ public class PlayerController : MonoBehaviour {
             translate += Vector3.down * speed * Time.deltaTime;
         }
 
-        if (Input.GetKeyDown("p"))
-        {
-            UIManager.Instance.TogglePause();
-        }
-
         if(Input.GetKey("space"))
         {
             if (lastTimeShot + fireFrequency < Time.timeSinceLevelLoad)
