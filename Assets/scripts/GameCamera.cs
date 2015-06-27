@@ -96,10 +96,13 @@ public class GameCamera : Singleton<GameCamera> {
         return false;
     }
 
+    void Awake()
+    {
+        this.cam = Camera.main;
+    }
+
 	// Use this for initialization
 	void Start () {
-        this.cam = Camera.main;
-
         float screenAspect = ((float)Screen.width) / (float)Screen.height;
         float cameraHeight = this.cam.orthographicSize * 2.0f;
         
