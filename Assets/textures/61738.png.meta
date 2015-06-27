@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 575b6cae41e40204bb66a19cd5a1eb5c
-timeCreated: 1435204040
+timeCreated: 1435293276
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -65,7 +65,7 @@ TextureImporter:
     21300116: 61738_58
     21300118: 61738_59
     21300120: 61738_60
-    21300122: life
+    21300122: star
     21300124: 61738_62
     21300126: 61738_63
     21300128: 61738_64
@@ -1013,7 +1013,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: life
+    - name: star
       rect:
         serializedVersion: 2
         x: 148
