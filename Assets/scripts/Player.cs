@@ -4,6 +4,9 @@ using System.Collections;
 public class Player : Singleton<Player> {
 
     [SerializeField]
+    private SpriteRenderer sprite;
+
+    [SerializeField]
     private Fire fire1;
 
     [SerializeField]
@@ -54,7 +57,8 @@ public class Player : Singleton<Player> {
 
     public void Fire()
     {
-        Instantiate((powerup ? this.fire3.gameObject : fire2.gameObject), transform.position, Quaternion.identity);
+        Vector3 position = new Vector3(transform.position.x, sprite.bounds.max.y, transform.position.z);
+        Instantiate((powerup ? this.fire3.gameObject : fire2.gameObject), position, Quaternion.identity);
     }
 
     private void CollidedWithAnEnemy(Enemy enemy)

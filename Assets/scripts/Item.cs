@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Item : Movable {
 
-    void Start()
+    public override void OnStart()
     {
-        ParallaxManager.Instance.AddMovable(this);
+        
     }
 }

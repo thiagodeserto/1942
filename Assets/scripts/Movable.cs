@@ -6,9 +6,10 @@ public class Movable : MonoBehaviour {
     [SerializeField]
     private SpriteRenderer sprite;
 
-    public SpriteRenderer Sprite()
+    void Start()
     {
-        return this.sprite;
+        ParallaxManager.Instance.AddMovable(this);
+        OnStart();
     }
 
     void Update()
@@ -17,5 +18,15 @@ public class Movable : MonoBehaviour {
         {
             ParallaxManager.Instance.RemoveMovable(this);
         }
+        OnUpdate();
     }
+
+    public SpriteRenderer Sprite()
+    {
+        return this.sprite;
+    }
+
+    public virtual void OnStart() { }
+
+    public virtual void OnUpdate() { }
 }

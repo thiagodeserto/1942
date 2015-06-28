@@ -4,9 +4,6 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     [SerializeField]
-    private SpriteRenderer sprite;
-
-    [SerializeField]
     private float speed = 5.0f;
 
     [SerializeField]
