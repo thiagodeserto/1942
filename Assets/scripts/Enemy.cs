@@ -20,7 +20,17 @@ public class Enemy : MonoBehaviour {
     private GameObject explosionPrefab;
 
     [SerializeField]
+    private GameObject bulletPrefab;
+
+    [SerializeField]
     private float health;
+
+    public void Shoot(float speed, Vector3 direction)
+    {
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        bullet.FillData(speed, direction);
+    }
 
     public void ReceiveDamage(float damage, Vector3 position)
     {

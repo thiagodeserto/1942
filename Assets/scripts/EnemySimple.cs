@@ -14,6 +14,9 @@ public class EnemySimple : Enemy {
     private float xSpeed;
 
     [SerializeField]
+    private float shotSpeed;
+
+    [SerializeField]
     private float ySpeed;
     private float ySpeedInverted;
 
@@ -46,6 +49,7 @@ public class EnemySimple : Enemy {
         if (transform.position.y < this.distanceToShoot && isGoing)
         {
             isGoing = false;
+            Shoot(shotSpeed, (Player.Instance.transform.position - transform.position).normalized);
             this.animator.SetBool("isGoing", isGoing);
         }
 

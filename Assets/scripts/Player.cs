@@ -61,7 +61,7 @@ public class Player : Singleton<Player> {
         Instantiate((powerup ? this.fire3.gameObject : fire2.gameObject), position, Quaternion.identity);
     }
 
-    private void CollidedWithAnEnemy(Enemy enemy)
+    private void CollidedWithSomething()
     {
         RemoveLife();
     }
@@ -77,12 +77,12 @@ public class Player : Singleton<Player> {
     {
         switch(collision.collider.gameObject.tag)
         {
+            case "Bullet":
+                CollidedWithSomething();
+                Destroy(collision.collider.gameObject);
+                break;
             case "Enemy":
-                Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
-                if (enemy != null)
-                {
-                    CollidedWithAnEnemy(enemy);
-                }
+                CollidedWithSomething();
                 break;
             case "Item":
                 Item item = collision.collider.gameObject.GetComponent<Item>();

@@ -65,21 +65,21 @@ public class PlayerController : MonoBehaviour {
             Vector3 translate = Vector3.zero;
             if (Input.GetKey("left") && transform.position.x > GameCamera.Instance.Bounds.min.x)
             {
-                translate += Vector3.left * speed * Time.deltaTime;
+                translate += Vector3.left;
             }
             if (Input.GetKey("right") && transform.position.x < GameCamera.Instance.Bounds.max.x)
             {
-                translate += Vector3.right * speed * Time.deltaTime;
+                translate += Vector3.right;
             }
             if (Input.GetKey("up") && transform.position.y < GameCamera.Instance.Bounds.max.y)
             {
-                translate += Vector3.up * speed * Time.deltaTime;
+                translate += Vector3.up;
             }
             if (Input.GetKey("down") && transform.position.y > GameCamera.Instance.Bounds.min.y)
             {
-                translate += Vector3.down * speed * Time.deltaTime;
+                translate += Vector3.down;
             }
-
+            translate *= speed * Time.deltaTime;
             animator.SetFloat("xSpeed", translate.x);
             transform.Translate(translate);
         }
