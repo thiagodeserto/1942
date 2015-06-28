@@ -22,7 +22,7 @@ public class ParallaxManager : Singleton<ParallaxManager>
 
     void Start()
     {
-        for(int i = parallaxList.Count-1; i > 0; i--)
+        for (int i = 1; i < parallaxList.Count; i++)
         {
             AdjustParallaxPosition(parallaxList[i],parallaxList[i-1]);
         }

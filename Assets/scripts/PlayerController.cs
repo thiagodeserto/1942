@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour {
 
     private Vector3 lastMousePosition;
 
+    [SerializeField]
+    private Animator animator;
+
 	// Use this for initialization
 	void Start () {
         lastMousePosition = GameCamera.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
@@ -62,6 +65,10 @@ public class PlayerController : MonoBehaviour {
             {
                 direction.y = transform.position.y;
             }
+
+            float xSpeed = direction.x - transform.position.x;
+
+            animator.SetFloat("xSpeed", xSpeed);
             transform.position = direction;
         }
         else
@@ -84,6 +91,7 @@ public class PlayerController : MonoBehaviour {
                 translate += Vector3.down * speed * Time.deltaTime;
             }
 
+            animator.SetFloat("xSpeed", translate.x);
             transform.Translate(translate);
         }
 
