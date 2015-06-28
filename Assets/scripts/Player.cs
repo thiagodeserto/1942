@@ -59,7 +59,6 @@ public class Player : Singleton<Player> {
 
     private void CollidedWithAnEnemy(Enemy enemy)
     {
-        enemy.ApplyDamage(10.0f);
         RemoveLife();
     }
 
@@ -70,19 +69,19 @@ public class Player : Singleton<Player> {
         Destroy(item.gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        switch(collider.gameObject.tag)
+        switch(collision.collider.gameObject.tag)
         {
             case "Enemy":
-                Enemy enemy = collider.gameObject.GetComponent<Enemy>();
+                Enemy enemy = collision.collider.gameObject.GetComponent<Enemy>();
                 if (enemy != null)
                 {
                     CollidedWithAnEnemy(enemy);
                 }
                 break;
             case "Item":
-                Item item = collider.gameObject.GetComponent<Item>();
+                Item item = collision.collider.gameObject.GetComponent<Item>();
                 if(item != null)
                 {
                     CollidedWithAnItem(item);

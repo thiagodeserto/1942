@@ -7,13 +7,17 @@ public class Enemy : MonoBehaviour {
     private float speed;
 
     [SerializeField]
-    private GameObject explosion;
+    private GameObject explosionPrefab;
 
     [SerializeField]
     private float health;
 
-    public void ApplyDamage(float damage)
+    public void ApplyDamage(float damage, Vector3 position)
     {
+        // Put the explosion always on top of the enemy
+        position.z = transform.position.z - 1;
+        GameObject explosion = (GameObject)Instantiate(explosionPrefab, position, Quaternion.identity);
+
         this.health -= damage;
         if(this.health <= 0)
         {
@@ -22,19 +26,23 @@ public class Enemy : MonoBehaviour {
             {
                 ItemManager.Instance.CreateItem(transform.position);
             }
-            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
+        }
+        else
+        {
+            // Only set the parent if the enemy is not dead - To match with old 1942 style
+            explosion.transform.SetParent(transform);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        Fire fire = collider.gameObject.GetComponent<Fire>();
+        Fire fire = collision.collider.gameObject.GetComponent<Fire>();
 
         if(fire != null)
         {
-            ApplyDamage(fire.Power);
-            Destroy(collider.gameObject);
+            ApplyDamage(fire.Power, collision.contacts[0].point);
+            Destroy(collision.collider.gameObject);
         }
     }
 	
