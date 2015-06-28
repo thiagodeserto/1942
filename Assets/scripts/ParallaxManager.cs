@@ -8,7 +8,7 @@ public class ParallaxManager : Singleton<ParallaxManager>
     private List<Parallax> parallaxList = new List<Parallax>();
 
     [SerializeField]
-    private List<Scenario> scenarioList = new List<Scenario>();
+    private List<Movable> movableObjects = new List<Movable>();
 
     [SerializeField]
     private float speed;
@@ -33,9 +33,14 @@ public class ParallaxManager : Singleton<ParallaxManager>
         first.transform.localPosition = new Vector3(first.transform.localPosition.x, second.GetBounds.max.y - 1, first.transform.localPosition.z);
     }
 
-    public void RemoveScenario(Scenario scenario)
+    public void RemoveMovable(Movable movable)
     {
-        this.scenarioList.Remove(scenario);
+        this.movableObjects.Remove(movable);
+    }
+
+    public void AddMovable(Movable movable)
+    {
+        this.movableObjects.Add(movable);
     }
 
 	void Update () {
@@ -50,10 +55,10 @@ public class ParallaxManager : Singleton<ParallaxManager>
             }
         }
 
-        for (int i = 0; i < scenarioList.Count; i++)
+        for (int i = 0; i < movableObjects.Count; i++)
         {
             Vector3 movement = Vector3.down * speed * Time.deltaTime;
-            scenarioList[i].transform.localPosition += movement;
+            movableObjects[i].transform.localPosition += movement;
         }
 	}
 }

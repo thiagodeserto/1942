@@ -14,9 +14,6 @@ public class PlayerController : MonoBehaviour {
 
     private float lastTimeShot = 0.0f;
 
-    [SerializeField]
-    private GameObject fire;
-
     private bool usingMouse = false;
 
     private Vector3 lastMousePosition;
@@ -28,11 +25,6 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
         lastMousePosition = GameCamera.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
 	}
-
-    void Fire()
-    {
-        Instantiate(fire, transform.position, Quaternion.identity);
-    }
 
     private void CheckController(Vector3 mousePosition)
     {
@@ -70,7 +62,7 @@ public class PlayerController : MonoBehaviour {
 
             animator.SetFloat("xSpeed", xSpeed);
             transform.position = direction;
-        }
+        } 
         else
         {
             Vector3 translate = Vector3.zero;
@@ -100,7 +92,7 @@ public class PlayerController : MonoBehaviour {
             if (lastTimeShot + fireFrequency < Time.timeSinceLevelLoad)
             {
                 lastTimeShot = Time.timeSinceLevelLoad;
-                Fire();
+                Player.Instance.Fire();
             }
         }
     }

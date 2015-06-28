@@ -9,10 +9,22 @@ public class Enemy : MonoBehaviour {
     [SerializeField]
     private GameObject explosion;
 
-    public void Kill()
+    [SerializeField]
+    private float health;
+
+    public void ApplyDamage(float damage)
     {
-        Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        this.health -= damage;
+        if(this.health <= 0)
+        {
+            Player.Instance.AddScore(100);
+            if (Player.Instance.Score % 500 == 0)
+            {
+                ItemManager.Instance.CreateItem(transform.position);
+            }
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -21,11 +33,9 @@ public class Enemy : MonoBehaviour {
 
         if(fire != null)
         {
+            ApplyDamage(fire.Power);
             Destroy(collider.gameObject);
-            Player.Instance.AddScore(100);
         }
-        
-        Kill();
     }
 	
 	// Update is called once per frame

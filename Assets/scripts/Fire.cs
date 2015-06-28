@@ -8,6 +8,13 @@ public class Fire : MonoBehaviour {
 
     [SerializeField]
     private float speed = 3.0f;
+
+    [SerializeField]
+    private float power;
+    public float Power
+    {
+        get { return this.power; }
+    }
 	
 	// Update is called once per frame
 	void Update () {
