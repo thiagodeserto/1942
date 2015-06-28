@@ -20,7 +20,9 @@ public class EnemyManager : MonoBehaviour {
         while(true)
         {
             yield return new WaitForSeconds(2.0f);
-            GameObject newEnemy = Instantiate(enemy.gameObject,transform.position,Quaternion.identity) as GameObject;
+            Vector3 randomPosition = new Vector3(Random.Range(GameCamera.Instance.Bounds.min.x, GameCamera.Instance.Bounds.max.x),transform.position.y,transform.position.z);
+            GameObject newEnemy = Instantiate(enemy.gameObject, randomPosition, Quaternion.identity) as GameObject;
+            newEnemy.transform.SetParent(transform);
             enemiesList.Add(newEnemy.GetComponent<Enemy>());
         }
     }

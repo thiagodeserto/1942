@@ -1,10 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum EEnemyType
+{
+    None = 0,
+    Enemy1 = 1,
+    Enemy2 = 2
+}
+
 public class Enemy : MonoBehaviour {
 
     [SerializeField]
-    private float speed;
+    private EEnemyType enemyType;
+
+    [SerializeField]
+    protected Animator animator;
 
     [SerializeField]
     private GameObject explosionPrefab;
@@ -12,7 +22,7 @@ public class Enemy : MonoBehaviour {
     [SerializeField]
     private float health;
 
-    public void ApplyDamage(float damage, Vector3 position)
+    public void ReceiveDamage(float damage, Vector3 position)
     {
         // Put the explosion always on top of the enemy
         position.z = transform.position.z - 1;
@@ -41,14 +51,8 @@ public class Enemy : MonoBehaviour {
 
         if(fire != null)
         {
-            ApplyDamage(fire.Power, collision.contacts[0].point);
+            ReceiveDamage(fire.Power, collision.contacts[0].point);
             Destroy(collision.collider.gameObject);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-        Vector3 diff = Player.Instance.transform.position - transform.position;
-        transform.Translate(diff.normalized * this.speed * Time.deltaTime);
-	}
 }

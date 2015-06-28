@@ -1,15 +1,12 @@
 fileFormatVersion: 2
-guid: 7fec9224668832d47b94c4c9d8b52965
-timeCreated: 1435201774
+guid: ea76b89a236b121418dacfb45ed5df45
+timeCreated: 1435524669
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: explosion_0
-    21300002: explosion_1
-    21300004: explosion_2
-    21300006: explosion_3
-    21300008: explosion_4
-    21300010: explosion_5
+    21300000: enemy1_0
+    21300002: enemy1_1
+    21300004: enemy1_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -55,7 +52,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: explosion_0
+    - name: enemy1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -65,7 +62,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: explosion_1
+    - name: enemy1_1
       rect:
         serializedVersion: 2
         x: 16
@@ -75,7 +72,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: explosion_2
+    - name: enemy1_2
       rect:
         serializedVersion: 2
         x: 32
@@ -85,37 +82,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: explosion_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: explosion_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: explosion_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-  spritePackingTag: player
+  spritePackingTag: enemies
   userData: 
   assetBundleName: 
   assetBundleVariant: 
