@@ -60,6 +60,11 @@ public class GameCamera : Singleton<GameCamera> {
         return false;
     }
 
+    public bool IsInside(Vector3 point)
+    {
+        return this.bounds.Contains(point);
+    }
+
     // Check if the bounds of the target is completelly out of camera bounds
     public bool OutOfBounds(Bounds targetBounds, EDirection direction)
     {

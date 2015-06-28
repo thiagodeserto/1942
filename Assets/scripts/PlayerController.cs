@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
         Vector3 mousePosition = GameCamera.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
         CheckController(mousePosition);
 
-        if(this.usingMouse)
+        if(this.usingMouse && GameCamera.Instance.IsInside(mousePosition))
         {
             mousePosition.z = transform.position.z;
             Vector3 direction = Vector3.MoveTowards(transform.position, mousePosition, speed * Time.deltaTime);
