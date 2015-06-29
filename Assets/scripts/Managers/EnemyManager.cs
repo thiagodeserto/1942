@@ -14,7 +14,7 @@ public struct EnemyAppearanceData
 public class EnemyManager : MonoBehaviour {
 
     [SerializeField]
-    private Enemy enemy;
+    private List<Enemy> enemiesList = new List<Enemy>();
 
     [SerializeField]
     private List<EnemyAppearanceData> enemyAppearanceList = new List<EnemyAppearanceData>();
@@ -30,7 +30,8 @@ public class EnemyManager : MonoBehaviour {
         {
             yield return new WaitForSeconds(Random.Range(enemyAppearanceData.timeBetween.min, enemyAppearanceData.timeBetween.max));
             Vector3 randomPosition = new Vector3(Random.Range(GameCamera.Instance.Bounds.min.x, GameCamera.Instance.Bounds.max.x), transform.position.y, transform.position.z);
-            GameObject newEnemy = Instantiate(enemy.gameObject, randomPosition, Quaternion.identity) as GameObject;
+            Enemy selectedEnemy = enemiesList.Find(enemy => enemy.EnemyType == enemyAppearanceData.type);
+            GameObject newEnemy = Instantiate(selectedEnemy.gameObject, randomPosition, Quaternion.identity) as GameObject;
             newEnemy.transform.SetParent(transform);
         }
     }

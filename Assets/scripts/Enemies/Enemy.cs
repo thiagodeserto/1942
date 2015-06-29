@@ -5,13 +5,24 @@ public enum EEnemyType
 {
     None = 0,
     Simple = 1,
-    Enemy2 = 2
+    Big = 2
+}
+
+[System.Serializable]
+public struct SimpleRange
+{
+    public float min;
+    public float max;
 }
 
 public class Enemy : MonoBehaviour {
 
     [SerializeField]
     private EEnemyType enemyType;
+    public EEnemyType EnemyType
+    {
+        get { return this.enemyType; }
+    }
 
     [SerializeField]
     protected Animator animator;
@@ -53,13 +64,18 @@ public class Enemy : MonoBehaviour {
             {
                 ItemManager.Instance.CreateItem(transform.position);
             }
-            Destroy(gameObject);
+            AutoDestroy();
         }
         else
         {
             // Only set the parent if the enemy is not dead - To match with old 1942 style
             explosion.transform.SetParent(transform);
         }
+    }
+
+    public virtual void AutoDestroy()
+    {
+        Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
