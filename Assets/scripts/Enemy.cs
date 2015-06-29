@@ -4,7 +4,7 @@ using System.Collections;
 public enum EEnemyType
 {
     None = 0,
-    Enemy1 = 1,
+    Simple = 1,
     Enemy2 = 2
 }
 
@@ -15,6 +15,13 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField]
     protected Animator animator;
+
+    [SerializeField]
+    private SpriteRenderer sprite;
+    public SpriteRenderer Sprite
+    {
+        get { return this.sprite; }
+    }
 
     [SerializeField]
     private GameObject explosionPrefab;

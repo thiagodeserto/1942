@@ -21,7 +21,7 @@ public class EnemySimple : Enemy {
     private float ySpeedInverted;
 
     [SerializeField]
-    private SimpleRange playerDistanceToShoot;
+    private SimpleRange rangeToShoot;
 
     private float distanceToShoot;
 
@@ -30,7 +30,7 @@ public class EnemySimple : Enemy {
 	// Use this for initialization
 	void Start () {
 
-        this.distanceToShoot = Random.Range(playerDistanceToShoot.min, playerDistanceToShoot.max);
+        this.distanceToShoot = Random.Range(rangeToShoot.min, rangeToShoot.max);
 
         if(transform.position.x > GameCamera.Instance.Bounds.center.x)
         {
@@ -57,6 +57,10 @@ public class EnemySimple : Enemy {
         if(!isGoing)
         {
             this.ySpeed = Mathf.Lerp(this.ySpeed,this.ySpeedInverted,Time.deltaTime * 3.0f);
+            if(GameCamera.Instance.OutOfBounds(Sprite.bounds,EDirection.Up))
+            {
+                Destroy(gameObject);
+            }
         }
 	}
 }
