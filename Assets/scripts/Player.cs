@@ -38,6 +38,7 @@ public class Player : Singleton<Player> {
     public void AddScore(int score)
     {
         this.score += score;
+
         UIManager.Instance.UpdateScore(this.score);
     }
 

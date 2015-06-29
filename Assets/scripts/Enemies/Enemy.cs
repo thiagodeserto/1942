@@ -61,13 +61,9 @@ public class Enemy : MonoBehaviour {
 
         this.health -= damage;
         Player.Instance.AddScore(score);
+        ItemManager.Instance.CheckScoreItem(transform.position);
         if(this.health <= 0)
         {
-            
-            if (Player.Instance.Score % 500 == 0)
-            {
-                ItemManager.Instance.CreateItem(transform.position);
-            }
             AutoDestroy();
         }
         else

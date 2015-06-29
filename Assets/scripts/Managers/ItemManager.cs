@@ -6,6 +6,18 @@ public class ItemManager : Singleton<ItemManager> {
     [SerializeField]
     private Item itemPrefab;
 
+    private int lastScoreItem = 0;
+
+    public void CheckScoreItem(Vector3 position)
+    {
+        int floordiv = Mathf.FloorToInt(Player.Instance.Score / 3000);
+        if(floordiv > lastScoreItem)
+        {
+            lastScoreItem = floordiv;
+            CreateItem(position);
+        }
+    }
+
     public void CreateItem(Vector3 position)
     {
         GameObject item = (GameObject)Instantiate(itemPrefab.gameObject, position, Quaternion.identity);
