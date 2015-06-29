@@ -10,8 +10,8 @@ public class Fire : MonoBehaviour {
     private float speed = 3.0f;
 
     [SerializeField]
-    private float power;
-    public float Power
+    private int power;
+    public int Power
     {
         get { return this.power; }
     }

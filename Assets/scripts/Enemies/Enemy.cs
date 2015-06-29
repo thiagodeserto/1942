@@ -41,6 +41,9 @@ public class Enemy : MonoBehaviour {
     private GameObject bulletPrefab;
 
     [SerializeField]
+    private int score;
+
+    [SerializeField]
     private float health;
 
     public void Shoot(float speed, Vector3 direction)
@@ -50,16 +53,17 @@ public class Enemy : MonoBehaviour {
         bullet.FillData(speed, direction);
     }
 
-    public void ReceiveDamage(float damage, Vector3 position)
+    public void ReceiveDamage(int damage, Vector3 position)
     {
         // Put the explosion always on top of the enemy
         position.z = transform.position.z - 1;
         GameObject explosion = (GameObject)Instantiate(explosionPrefab, position, Quaternion.identity);
 
         this.health -= damage;
+        Player.Instance.AddScore(score);
         if(this.health <= 0)
         {
-            Player.Instance.AddScore(100);
+            
             if (Player.Instance.Score % 500 == 0)
             {
                 ItemManager.Instance.CreateItem(transform.position);

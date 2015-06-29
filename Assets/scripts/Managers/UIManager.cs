@@ -25,10 +25,6 @@ public class UIManager : Singleton<UIManager> {
     [SerializeField]
     private GameObject gameover;
 
-
-
-    
-
 	// Use this for initialization
 	void Start () {
         
