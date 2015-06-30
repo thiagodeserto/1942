@@ -19,7 +19,6 @@ public class EnemyManager : MonoBehaviour {
     [SerializeField]
     private List<EnemyAppearanceData> enemyAppearanceList = new List<EnemyAppearanceData>();
 
-	// Use this for initialization
 	void Start () {
         enemyAppearanceList.Sort((a, b) => { return Mathf.RoundToInt(a.time - b.time); });
 	}
@@ -36,7 +35,6 @@ public class EnemyManager : MonoBehaviour {
         }
     }
 	
-	// Update is called once per frame
 	void Update () {
 	    
         if(enemyAppearanceList.Count > 0)

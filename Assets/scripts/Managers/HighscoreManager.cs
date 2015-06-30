@@ -8,7 +8,6 @@ public class HighscoreManager : Singleton<HighscoreManager> {
     [SerializeField]
     private int defaultHighscore;
 
-	// Use this for initialization
 	void Start () {
         this.highscore = PlayerPrefs.GetInt("highscore", defaultHighscore);
         UIManager.Instance.UpdateHighscore(this.highscore);

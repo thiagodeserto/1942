@@ -22,8 +22,6 @@ public class EnemyBig : Enemy {
 
     private bool dead = false;
 
-
-	// Use this for initialization
 	void Start () {
         // Randomize the x Position when the enemy is created
         float yPosition = GameCamera.Instance.Bounds.min.y - Sprite.bounds.size.y;
@@ -51,7 +49,6 @@ public class EnemyBig : Enemy {
         Destroy(gameObject);
     }
 	
-	// Update is called once per frame
 	void Update () {
 
         if(dead)

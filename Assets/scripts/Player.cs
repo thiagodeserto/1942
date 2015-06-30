@@ -41,7 +41,6 @@ public class Player : Singleton<Player> {
         get { return this.score; }
     }
     
-	// Use this for initialization
 	void Start () {
         UIManager.Instance.UpdateLives(lives, maxLives);
         UIManager.Instance.UpdateScore(0);

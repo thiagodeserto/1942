@@ -6,7 +6,6 @@ public class Scenario : Movable {
     [SerializeField]
     private EDirection direction;
 
-	// Use this for initialization
 	public override void OnStart () {
         float x = transform.localPosition.x;
         if (direction == EDirection.Left)

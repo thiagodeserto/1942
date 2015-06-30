@@ -16,7 +16,6 @@ public class Bullet : MonoBehaviour {
         this.speed = s;
     }
 
-	// Update is called once per frame
 	void Update () {
         transform.Translate(direction * speed * Time.deltaTime);
         if (GameCamera.Instance.OutOfBounds(sprite.bounds, EDirection.Down))

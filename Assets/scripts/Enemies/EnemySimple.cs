@@ -20,7 +20,6 @@ public class EnemySimple : Enemy {
 
     private bool isGoing = true;
 
-	// Use this for initialization
 	void Start () {
 
         this.distanceToShoot = Random.Range(rangeToShoot.min, rangeToShoot.max);
@@ -33,7 +32,6 @@ public class EnemySimple : Enemy {
         this.ySpeedInverted = -this.ySpeed;
 	}
 	
-	// Update is called once per frame
 	void Update () {
         
         Vector3 direction = new Vector3(xSpeed, ySpeed, 0);

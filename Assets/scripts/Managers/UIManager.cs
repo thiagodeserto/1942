@@ -80,7 +80,6 @@ public class UIManager : Singleton<UIManager> {
         }
     }
 	
-	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown("p"))
         {

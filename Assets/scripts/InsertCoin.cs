@@ -13,7 +13,6 @@ public class InsertCoin : MonoBehaviour {
     [SerializeField]
     private float OffTime;
 
-	// Use this for initialization
 	void Start () {
         StartCoroutine(Blink());
 	}

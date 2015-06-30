@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private Animator animator;
 
-	// Use this for initialization
 	void Start () {
         lastMousePosition = GameCamera.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
 	}
@@ -36,7 +35,6 @@ public class PlayerController : MonoBehaviour {
         lastMousePosition = GameCamera.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
     }
 	
-	// Update is called once per frame
     void Update()
     {
         // Ignore entire controller update if the game is paused

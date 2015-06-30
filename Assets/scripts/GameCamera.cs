@@ -24,6 +24,19 @@ public class GameCamera : Singleton<GameCamera> {
         get { return this.bounds; }
     }
 
+    void Awake()
+    {
+        this.cam = Camera.main;
+    }
+
+    void Start()
+    {
+        float screenAspect = ((float)Screen.width) / (float)Screen.height;
+        float cameraHeight = this.cam.orthographicSize * 2.0f;
+
+        bounds = new Bounds(this.cam.transform.position, new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
+    }
+
     // Check if the bounds of the target is completelly in of camera bounds
     public bool InOfBounds(Bounds targetBounds, EDirection direction)
     {
@@ -100,17 +113,4 @@ public class GameCamera : Singleton<GameCamera> {
         }
         return false;
     }
-
-    void Awake()
-    {
-        this.cam = Camera.main;
-    }
-
-	// Use this for initialization
-	void Start () {
-        float screenAspect = ((float)Screen.width) / (float)Screen.height;
-        float cameraHeight = this.cam.orthographicSize * 2.0f;
-        
-        bounds = new Bounds(this.cam.transform.position, new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
-	}
 }
