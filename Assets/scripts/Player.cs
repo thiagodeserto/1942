@@ -16,8 +16,9 @@ public class Player : Singleton<Player> {
     private Fire fire3;
 
     [SerializeField]
-    private int maxLives = 3;
+    private int maxLives;
 
+    [SerializeField]
     private int lives;
 
     private bool powerup = false;
@@ -30,7 +31,6 @@ public class Player : Singleton<Player> {
     
 	// Use this for initialization
 	void Start () {
-        this.lives = maxLives;
         UIManager.Instance.UpdateLives(lives, maxLives);
         UIManager.Instance.UpdateScore(0);
 	}

@@ -20,6 +20,9 @@ public class UIManager : Singleton<UIManager> {
     private Transform lowerRight;
 
     [SerializeField]
+    private Transform lowerLeft;
+
+    [SerializeField]
     private GameObject pause;
 
     [SerializeField]
@@ -65,8 +68,8 @@ public class UIManager : Singleton<UIManager> {
     {
         while(livesObjects.Count < maxLives)
         {
-            Vector3 position = lowerRight.transform.position;
-            position -= new Vector3(25+ (50 * livesObjects.Count),-25,0);
+            Vector3 position = lowerLeft.transform.position;
+            position += new Vector3(16+ (25 * livesObjects.Count),16,0);
             GameObject lifeGO = Instantiate(lifePrefab, position, Quaternion.identity) as GameObject;
             lifeGO.transform.SetParent(lowerRight.transform);
             livesObjects.Add(lifeGO);
