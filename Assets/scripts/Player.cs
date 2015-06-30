@@ -21,7 +21,19 @@ public class Player : Singleton<Player> {
     [SerializeField]
     private int lives;
 
+    [SerializeField]
+    private Animator animator;
+
+    [SerializeField]
+    private Collider2D collider2d;
+
     private bool powerup = false;
+
+    private bool dead = false;
+    public bool Dead
+    {
+        get { return this.dead; }
+    }
 
     private int score = 0;
     public int Score
@@ -42,17 +54,37 @@ public class Player : Singleton<Player> {
         UIManager.Instance.UpdateScore(this.score);
     }
 
+    IEnumerator RestartPlayer()
+    {
+        yield return new WaitForSeconds(3.0f);
+        transform.localPosition = Vector3.zero;
+        collider2d.enabled = true;
+        this.dead = false;
+        animator.SetBool("dead", this.dead);
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(3.0f);
+        UIManager.Instance.GameOver();
+    }
+
     void RemoveLife()
     {
-        if(this.lives > 0)
+        this.powerup = false;
+        this.lives--;
+        UIManager.Instance.UpdateLives(lives, maxLives);
+        this.dead = true;
+        animator.SetBool("dead", this.dead);
+        collider2d.enabled = false;
+
+        if (this.lives >= 0)
         {
-            this.powerup = false;
-            this.lives--;
-            UIManager.Instance.UpdateLives(lives, maxLives);
+            StartCoroutine(RestartPlayer());
         }
         else
         {
-            UIManager.Instance.GameOver();
+            StartCoroutine(GameOver());
         }
     }
 

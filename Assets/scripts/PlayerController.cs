@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
     void Update()
     {
         // Ignore entire controller update if the game is paused
-        if(UIManager.Instance.Paused)
+        if(UIManager.Instance.Paused || Player.Instance.Dead)
         {
             return;
         }
