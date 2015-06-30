@@ -25,16 +25,17 @@ public class UIManager : Singleton<UIManager> {
     [SerializeField]
     private GameObject gameover;
 
-	// Use this for initialization
-	void Start () {
-        
-	}
+    private bool paused = false;
+    public bool Paused
+    {
+        get { return this.paused; }
+    }
 
     public void TogglePause()
     {
-        bool enabled = Time.timeScale == 1;
-        Time.timeScale = (enabled ? 0 : 1);
-        pause.SetActive(enabled);
+        paused = !paused;
+        Time.timeScale = (paused ? 0 : 1);
+        pause.SetActive(paused);
     }
 
     public void GameOver()

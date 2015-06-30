@@ -39,6 +39,11 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
+        // Ignore entire controller update if the game is paused
+        if(UIManager.Instance.Paused)
+        {
+            return;
+        }
         Vector3 mousePosition = GameCamera.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
         CheckController(mousePosition);
 
