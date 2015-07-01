@@ -44,7 +44,7 @@ public class EnemySimple : Enemy {
             this.animator.SetBool("isGoing", isGoing);
         }
 
-        // Interpolates the enemy speed to better animation
+        // Interpolates the enemy speed to improve the animation
         if(!isGoing)
         {
             this.ySpeed = Mathf.Lerp(this.ySpeed,this.ySpeedInverted,Time.deltaTime * 3.0f);

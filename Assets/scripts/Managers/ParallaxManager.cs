@@ -12,13 +12,6 @@ public class ParallaxManager : Singleton<ParallaxManager>
 
     [SerializeField]
     private float speed;
-    public float Speed
-    {
-        set
-        {
-            speed = value;
-        }
-    }
 
     void Start()
     {

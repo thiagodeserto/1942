@@ -69,7 +69,7 @@ public class UIManager : Singleton<UIManager> {
         while(livesObjects.Count < maxLives)
         {
             Vector3 position = lowerLeft.transform.position;
-            position += new Vector3(16+ (25 * livesObjects.Count),16,0);
+            position += new Vector3(16 + (25 * livesObjects.Count),16,0);
             GameObject lifeGO = Instantiate(lifePrefab, position, Quaternion.identity) as GameObject;
             lifeGO.transform.SetParent(lowerRight.transform);
             livesObjects.Add(lifeGO);

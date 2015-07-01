@@ -37,42 +37,6 @@ public class GameCamera : Singleton<GameCamera> {
         bounds = new Bounds(this.cam.transform.position, new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
     }
 
-    // Check if the bounds of the target is completelly in of camera bounds
-    public bool InOfBounds(Bounds targetBounds, EDirection direction)
-    {
-        switch (direction)
-        {
-            case EDirection.Down:
-                if (targetBounds.min.y > this.bounds.min.y)
-                {
-                    return true;
-                }
-                break;
-            case EDirection.Up:
-                if (targetBounds.max.y < this.bounds.max.y)
-                {
-                    return true;
-                }
-                break;
-            case EDirection.Left:
-                if (targetBounds.min.x > this.bounds.min.x)
-                {
-                    return true;
-                }
-                break;
-            case EDirection.Right:
-                if (targetBounds.max.x < this.bounds.max.x)
-                {
-                    return true;
-                }
-                break;
-            default:
-                Debug.LogWarning("OutOfBounds with no defined direction: " + direction);
-                break;
-        }
-        return false;
-    }
-
     public bool IsInside(Vector3 point)
     {
         return this.bounds.Contains(point);

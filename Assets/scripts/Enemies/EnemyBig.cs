@@ -44,6 +44,7 @@ public class EnemyBig : Enemy {
         this.animator.SetBool("dead", dead);
     }
 
+    // Called from Animation
     public void DestroyObject()
     {
         Destroy(gameObject);

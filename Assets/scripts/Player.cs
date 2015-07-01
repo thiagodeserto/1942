@@ -90,6 +90,8 @@ public class Player : Singleton<Player> {
     public void Fire()
     {
         Vector3 position = new Vector3(transform.position.x, sprite.bounds.max.y, transform.position.z);
+        // TODO: Implement a pool manager ASAP
+        // Not used for this case to avoid using third party pool managers and lose time implementing
         Instantiate((powerup ? this.fire3.gameObject : fire2.gameObject), position, Quaternion.identity);
     }
 
