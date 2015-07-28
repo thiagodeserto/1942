@@ -2,7 +2,7 @@
 
 http://1942.thiagodeserto.com
 
-Features:
+#####Features:  
 -Player's Ship with animations;  
 -Two opponents with animations and different behaviors;  
 -Player's and enemies bullets;  
@@ -12,8 +12,8 @@ Features:
 -Simple highscore system with playerprefs persistence;  
 -Implemented a simple background scrolling system;  
   
-Challenge:  
+#####Challenge:  
 When I have a free time I'll implement a multiplayer online system.  
   
-Extra:  
+#####Extra:  
 Photos of real study case on a local games pub.  
