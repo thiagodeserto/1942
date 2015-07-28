@@ -13,7 +13,7 @@ Features:
 -Implemented a simple background scrolling system;
 
 Challenge:
-If I have one more week I can implement a multiplayer online system.
+When I have a free time I'll implement a multiplayer online system.
 
 Extra:
 Photos of real study case on a local games pub.
